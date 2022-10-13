@@ -1,3 +1,14 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 # Introduction
 
 The purpose of this document is to read and analyze data from a personal activity monitoring device. We will examine daily patterns as well as look for weekly trends. 
