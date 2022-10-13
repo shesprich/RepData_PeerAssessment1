@@ -6,7 +6,7 @@ The purpose of this document is to read and analyze data from a personal activit
 
 Here we will conduct our primary analysis of the data.
 
-## Summary Statistics
+## Loading and preprocessing the data
 
 First we will begin by taking a first look at the data by loading it and generating some basic summary statistics and plots. To begin we will first import the data into R as the variable ```amd``` (activity monitoring data) and examine it.
 
@@ -19,6 +19,8 @@ As we can see there are a ton of ```NA``` values. These will need to be dealt wi
 ``` {r}
 amd$date <- as.Date(amd$date, format = "%Y-%m-%d")
 ```
+
+## What is mean total number of steps taken per day?
 
 To summarize by dates we can use the ```dplyr``` libraries ```group_by``` function.
 
@@ -46,7 +48,7 @@ dsMedian <- median(dailySteps$sum)
 
 The mean daily steps taken is `r dsMean` and the median daily steps taken is `r dsMedian`
 
-## Daily Activity Patterns
+## What is the average daily activity pattern?
 
 Now that we have a general grasp of the data, let's move on to looking at activity as it occurs throughout the day. Let's do this by first by averaging the data across the ```intervals``` variable to create an "average day".
 
@@ -74,7 +76,7 @@ maxMean <- max(avgDay$mean)
 
 So, the maximum average activity (`r maxMean` steps) occurs at interval `r maxIndex` which corresponds to the `r maxInterval` interval.
 
-## Inputing Missing Values
+## Imputing missing values
 
 As we noted earlier, there are a lot of missing values. This can introduce biases into some of the analyses we are doing. First let's examine our missing data by determining exactly how many missing values we have.
 
@@ -124,7 +126,7 @@ dsMedianComplete <- median(dailyStepsComplete$sum)
 
 The new mean daily steps taken is `r dsMeanComplete` and the median daily steps taken is `r dsMedianComplete`. As you can see both number are higher that the original values (mean:`r dsMean`; median:`r dsMedian`). It would seem that substituting missing values for average values shifts the average up.
 
-## Diffrences in Activity Patterns Between Weekdays and Weekends
+## Are there differences in activity patterns between weekdays and weekends?
 
 As a final level of analysis, let us look at how activity differs during weekdays as opposed to weekends. To do this we must first create a factor variable which splits the data into two levels (weekdays and weekends).
 
